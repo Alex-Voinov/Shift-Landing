@@ -1,5 +1,7 @@
 import { forwardRef } from 'react'
 import styles from './Preview.module.css'
+import { EXTERNAL_LINKS } from '@/config/links'
+import Lightning from '@/assets/images/svg/lightning.svg'
 
 const descPoints = [
     'без публикации вакансий, модерации и платы за нее и усиления на сайтах объявлений;',
@@ -24,8 +26,33 @@ const Preview = forwardRef<HTMLElement>((_, ref) => {
                         <span>{text}</span>
                     </div>)}
                 </div>
+                <button
+                    onClick={() => window.open(EXTERNAL_LINKS.request, "_blank")}
+                    className={styles.send}
+                >
+                    Попробовать за 1 ₽ первый месяц
+                </button>
             </main>
             <div className={styles.back} />
+            <div className={styles.signature}>
+                Самая большая база рабочих рук с рейтингом в городе.
+            </div>
+            <div className={styles.whyBlockContainer}>
+                <div className={styles.whyBlock}>
+                    <div className={styles.whyWe}>
+                        Почему мы?
+                    </div>
+                    <div className={styles.indicators}>
+                        Показатели
+                    </div>
+                    <div className={styles.stats}>
+                        <span>1400+</span> <span>довольных клиентов</span>
+                    </div>
+                    <div className={styles.label}>
+                        <img src={Lightning} alt="lightning" />
+                    </div>
+                </div>
+            </div>
         </section>
     )
 })
