@@ -28,14 +28,13 @@
             &:last-of-type {
                 margin-top: -47px;
                 height: auto;
+                width: fit-content;
                 background:
                     linear-gradient(87.79deg, #2EE9A9 1.47%, #008DF2 105.22%);
 
-                /* показываем градиент внутри текста */
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
 
-                /* для Firefox */
                 background-clip: text;
                 color: transparent;
             }
@@ -108,7 +107,7 @@
 .signature {
     position: absolute;
     z-index: 3;
-    left: 224px;
+    left: calc((100vw - 1472px) / 2);
     bottom: 80px;
     font-weight: 400;
     font-size: 24px;
@@ -124,7 +123,7 @@
     position: absolute;
     width: 333px;
     height: 131px;
-    right: 224px;
+    right: calc((100vw - 1472px) / 2);
     bottom: 80px;
     border: 1px solid #E5E5E5;
     background: #FFFFFF;
@@ -206,7 +205,7 @@
     display: none;
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 1550px) {
     .wrapper {
         height: 900px;
 
@@ -226,24 +225,24 @@
     .signature {
         font-size: 20px;
         width: 240px;
-        left: calc((100vw - 1040px) / 2);
         bottom: 90px;
+        left: calc((100vw - 1122px) / 2);
     }
 
     .whyBlockContainer {
         bottom: 90px;
-        right: calc((100vw - 1040px) / 2);
+        right: calc((100vw - 1122px) / 2);
     }
 }
 
 
-@media (max-width: 1140px) {
+@media (max-width: 1200px) {
     .whyBlockContainer {
-        right: 50px;
+        right: calc((100vw - 770px) / 2);
     }
 
     .signature {
-        left: 50px;
+        left: calc((100vw - 770px) / 2);
     }
 }
 
@@ -270,10 +269,18 @@
     }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 820px) {
+    .whyBlockContainer {
+        display: none;
+    }
+
+    .signature {
+        display: none;
+    }
 
     .wrapper {
         height: 640px;
+
         &>main>h1 {
             letter-spacing: -0.02em;
             font-size: 30px;
@@ -291,11 +298,13 @@
     .descBlock {
         max-width: 280px;
         margin-top: 20px;
+
         &>div {
             display: inline-block;
             height: auto;
             line-height: 120%;
             margin-bottom: 0.8em;
+
             &>div {
                 display: inline-block;
             }
@@ -315,15 +324,7 @@
         display: none;
     }
 
-    .whyBlockContainer {
-        display: none;
-    }
-
-    .signature {
-        display: none;
-    }
-
-    .send{
+    .send {
         margin-top: 92px;
         width: 280px;
     }

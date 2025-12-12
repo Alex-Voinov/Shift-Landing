@@ -68,7 +68,7 @@
 }
 
 /* Пропадает меню, появляется бургер */
-@media (max-width: 768px) {
+@media (max-width: 820px) {
     .menu {
         display: none;
     }

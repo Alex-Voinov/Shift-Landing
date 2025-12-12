@@ -7,6 +7,7 @@ import Problems from "./sections/Problems"
 import useActiveSection from "@/hooks/useActiveSection"
 import Workflow from "./sections/Workflow"
 import Marquee from "./components/Marquee/Marquee"
+import Footer from "./components/Footer"
 
 
 const sections = [
@@ -38,6 +39,7 @@ const App = () => {
         />
       ))}
       <Marquee/>
+      <Footer/>
     </>
   );
 };
