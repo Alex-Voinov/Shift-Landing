@@ -15,8 +15,14 @@ const Preview = forwardRef<HTMLElement>((_, ref) => {
     return (
         <section ref={ref} className={styles.wrapper}>
             <main>
-                <h1>Соберите рабочий персонал</h1>
-                <h1>на ваш объект на завтра</h1>
+                <h1>
+                    <span className={styles.fullText}>Соберите рабочий персонал</span>
+                    <span className={styles.shortText}>Рабочий персонал</span>  
+                </h1>
+                <h1>
+                    <span className={styles.fullText}>на ваш объект на завтра</span> 
+                    <span className={styles.shortText}>на завтра</span>    
+                </h1>
                 <h1>за 10 минут</h1>
                 <div className={styles.descBlock}>
                     {descPoints.map((text, index) => <div
@@ -30,7 +36,7 @@ const Preview = forwardRef<HTMLElement>((_, ref) => {
                     onClick={() => window.open(EXTERNAL_LINKS.request, "_blank")}
                     className={styles.send}
                 >
-                    Попробовать за 1 ₽ первый месяц
+                    Попробовать за 1 ₽&nbsp;<span>первый месяц</span> 
                 </button>
             </main>
             <div className={styles.back} />
