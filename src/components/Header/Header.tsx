@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import styles from './Header.module.css'
 import clsx from 'clsx'
+import Burger from '@/assets/images/svg/burger.svg'
+
 
 interface IHeader {
     activeSection: number;
@@ -36,6 +38,7 @@ const Header: FC<IHeader> = ({ activeSection, onClickSection }) => {
 
                 </div>
             </div>
+            <img className={styles.burger} src={Burger} alt="menu" />
         </header>
     )
 }

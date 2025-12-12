@@ -48,3 +48,37 @@
         }
     }
 }
+
+.burger{
+    display: none;
+    --side: 40px;
+    width: var(--side);
+    height: var(--side);
+    margin-left: 10px;
+}
+
+/* Начинает уменьшеться расстояние между лого */
+@media (max-width: 1576px) {
+    .wrapper {
+        padding: 16px 20px 16px 20px;
+    }
+    .container{
+        width: 100%;
+    }
+}
+
+/* Пропадает меню, появляется бургер */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+    .burger{
+        display: block;
+    }
+    .wrapper{
+        justify-content: space-between;
+    }
+    .container{
+        flex: 1;
+    }
+}
