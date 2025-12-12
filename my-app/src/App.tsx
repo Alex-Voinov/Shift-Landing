@@ -1,0 +1,43 @@
+import "@/assets/styles/reset.css"
+import "@/assets/styles/variables.css"
+import "@/assets/styles/global.css"
+import Header from "@/components/Header"
+import Preview from "./sections/Preview"
+import Problems from "./sections/Problems"
+import useActiveSection from "@/hooks/useActiveSection"
+import Workflow from "./sections/Workflow"
+
+
+const sections = [
+  Preview,
+  Problems,
+  Workflow
+];
+
+const App = () => {
+  const { active, refs } = useActiveSection(sections.length);
+
+  const handleMenuClick = (idx: number) => {
+    const el = refs.current[idx];
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  return (
+    <>
+      <Header activeSection={active} onClickSection={handleMenuClick} />
+
+      {sections.map((Section, idx) => (
+        <Section
+          key={idx}
+          ref={(el: HTMLDivElement | null) => {
+            refs.current[idx] = el!;
+          }}
+        />
+      ))}
+    </>
+  );
+};
+
+export default App
