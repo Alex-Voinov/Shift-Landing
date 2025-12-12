@@ -6,12 +6,13 @@ import Preview from "./sections/Preview"
 import Problems from "./sections/Problems"
 import useActiveSection from "@/hooks/useActiveSection"
 import Workflow from "./sections/Workflow"
+import Marquee from "./components/Marquee/Marquee"
 
 
 const sections = [
   Preview,
   Problems,
-  Workflow
+  Workflow,
 ];
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
           }}
         />
       ))}
+      <Marquee/>
     </>
   );
 };

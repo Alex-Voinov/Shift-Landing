@@ -1,0 +1,16 @@
+.container {
+  background-color: #2985FF;
+  padding: 18px 0;
+  overflow: hidden;
+}
+
+.word {
+  margin-right: 30px;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 0%;
+}
