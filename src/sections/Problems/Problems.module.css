@@ -43,6 +43,32 @@
     margin-top: 35px;
 }
 
+.slider {
+    display: none;
+    margin-top: 20px;
+}
+
+.sliderPoints {
+    --side: 6px;
+    width: var(--side) !important;
+    height: var(--side) !important;
+    border-radius: 50% !important;
+    background-color: #D9D9D9 !important;
+}
+
+.activePoint {
+    background-color: #4488FC !important;
+}
+
+.activeCard {
+    background: #2985FF!important;
+    color: white;
+}
+
+.defaultCard {
+    background: #F5F5F5!important;
+    color: #000000!important;
+}
 
 @media (max-width: 1550px) {
     .wrapper>main {
@@ -79,6 +105,10 @@
     }
 
     .container {
-        margin-top: 20px;
+        display: none;
+    }
+
+    .slider {
+        display: block;
     }
 }
