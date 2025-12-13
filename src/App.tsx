@@ -10,6 +10,7 @@ import Marquee from "./components/Marquee/Marquee"
 import Footer from "./components/Footer"
 import Benefits from "./sections/Benefits"
 import Tariffs from "./sections/Tariffs"
+import TrustedBy from "./sections/TrustedBy"
 
 
 const sections = [
@@ -41,9 +42,10 @@ const App = () => {
           }}
         />
       ))}
-      <Marquee/>
-      <Tariffs/>
-      <Footer/>
+      <Marquee />
+      <TrustedBy />
+      <Tariffs />
+      <Footer />
     </>
   );
 };
