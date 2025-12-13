@@ -9,6 +9,7 @@ import Workflow from "./sections/Workflow"
 import Marquee from "./components/Marquee/Marquee"
 import Footer from "./components/Footer"
 import Benefits from "./sections/Benefits"
+import Tariffs from "./sections/Tariffs"
 
 
 const sections = [
@@ -41,6 +42,7 @@ const App = () => {
         />
       ))}
       <Marquee/>
+      <Tariffs/>
       <Footer/>
     </>
   );
