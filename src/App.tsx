@@ -8,12 +8,14 @@ import useActiveSection from "@/hooks/useActiveSection"
 import Workflow from "./sections/Workflow"
 import Marquee from "./components/Marquee/Marquee"
 import Footer from "./components/Footer"
+import Benefits from "./sections/Benefits"
 
 
 const sections = [
   Preview,
   Problems,
   Workflow,
+  Benefits
 ];
 
 const App = () => {

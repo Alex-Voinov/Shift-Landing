@@ -6,13 +6,11 @@ import clsx from "clsx";
 
 interface IProblemCard {
     problemText: string;
-    key: string;
     className?: string;
 }
 
-const ProblemCard: FC<IProblemCard> = ({ problemText, key, className = '' }) => {
+const ProblemCard: FC<IProblemCard> = ({ problemText, className = '' }) => {
     return <div
-        key={key}
         className={clsx(styles.wrapper, className)}
     >
         {problemText}
