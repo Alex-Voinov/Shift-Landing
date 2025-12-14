@@ -1,0 +1,32 @@
+.wrapper {
+    width: 100%;
+    padding: 24px 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &>main {
+        width: 1472px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1550px) {
+    .wrapper>main {
+        width: 1122px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .wrapper>main {
+        width: 770px;
+    }
+}
+
+@media (max-width: 820px) {
+    .wrapper>main {
+        width: 280px;
+    }
+}
