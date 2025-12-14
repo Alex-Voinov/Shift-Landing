@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styles from './Header.module.css'
 import clsx from 'clsx'
 import Burger from '@/assets/images/svg/burger.svg'
-
+import BurgerMenu from '../BurgerMenu';
 
 interface IHeader {
     activeSection: number;
@@ -19,26 +19,36 @@ const menuPoints = [
 ]
 
 const Header: FC<IHeader> = ({ activeSection, onClickSection }) => {
+
+    const [open, setOpen] = useState(false);
+    const logo = <div className={styles.logo}>
+    </div>
+    const menu = <div className={styles.menu}>
+        {menuPoints.map((text, index) => <p
+            key={`header-menu-point-${index}`}
+            className={clsx(activeSection === index && styles.active)}
+            onClick={() => {
+                open && setOpen(false)
+                onClickSection?.(index)
+            }}
+        >
+            {text}
+        </p>)} </div>
+
     return (
         <header className={styles.wrapper}>
             <div className={styles.container}>
-                <div className={styles.logo}>
-
-                </div>
-                <div className={styles.menu}>
-                    {menuPoints.map((text, index) => <p
-                        key={`header-menu-point-${index}`}
-                        className={clsx(activeSection === index && styles.active)}
-                        onClick={() => onClickSection?.(index)}
-                    >
-                        {text}
-                    </p>)}
-                </div>
-                <div className={styles.logo}>
-
-                </div>
+                {logo}
+                {menu}
+                {logo}
             </div>
-            <img className={styles.burger} src={Burger} alt="menu" />
+            <img onClick={() => setOpen(true)} className={styles.burger} src={Burger} alt="menu" />
+            <BurgerMenu open={open} onClose={() => setOpen(false)}>
+                <div className={styles.menuContainer}>
+                    {logo}
+                    {menu}
+                </div>
+            </BurgerMenu>
         </header>
     )
 }

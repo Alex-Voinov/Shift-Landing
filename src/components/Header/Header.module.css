@@ -43,13 +43,14 @@
         line-height: 140%;
         letter-spacing: 0%;
         transition: color 0.3s ease-out;
-        &.active{
+
+        &.active {
             color: #2985FF;
         }
     }
 }
 
-.burger{
+.burger {
     display: none;
     --side: 40px;
     width: var(--side);
@@ -57,12 +58,35 @@
     margin-left: 10px;
 }
 
+.menuContainer {
+    width: 100%;
+    height: 100%;
+
+    &>.logo {
+        --side: 32px;
+    }
+
+    &>.menu {
+        display: block;
+        margin-top: 20px;
+        
+        &>p {
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: 0%;
+        }
+    }
+}
+
 /* Начинает уменьшеться расстояние между лого */
 @media (max-width: 1576px) {
     .wrapper {
         padding: 16px 20px 16px 20px;
     }
-    .container{
+
+    .container {
         width: 100%;
     }
 }
@@ -72,13 +96,20 @@
     .menu {
         display: none;
     }
-    .burger{
+
+    .logo {
+        --side: 40px;
+    }
+
+    .burger {
         display: block;
     }
-    .wrapper{
+
+    .wrapper {
         justify-content: space-between;
     }
-    .container{
+
+    .container {
         flex: 1;
     }
 }

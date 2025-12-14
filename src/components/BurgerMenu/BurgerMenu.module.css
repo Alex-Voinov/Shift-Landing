@@ -1,0 +1,26 @@
+.overlay {
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background: #00000033;
+    backdrop-filter: blur(10px)
+}
+
+.menu {
+    position: fixed;
+    right: 0;
+    z-index: 1000;
+    width: 240px;
+    height: 100%;
+    background: #fff;
+    transform: translateX(100%);
+    animation: slideIn 0.25s ease forwards;
+    border-radius: 12px 0 0 12px;
+    padding: 40px;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
