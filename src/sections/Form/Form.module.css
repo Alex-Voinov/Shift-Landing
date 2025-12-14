@@ -80,6 +80,15 @@
     &>textarea {
         padding: 12px;
         height: 140px;
+        color: #000000;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+
+        &::placeholder {
+            color: #A3A3A3;
+        }
     }
 
     &>button {
@@ -116,14 +125,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        &>img{
+
+        &>img {
             display: none;
             width: 10px;
             height: 8px;
         }
-        &.select{
+
+        &.select {
             border-color: #2985FF;
-            &>img{
+
+            &>img {
                 display: block;
             }
         }
@@ -136,5 +148,93 @@
         line-height: 100%;
         letter-spacing: 0%;
         color: #737373;
+    }
+}
+
+
+@media (max-width: 1550px) {
+    .wrapper>main {
+        width: 1122px;
+    }
+
+    .textBlock,
+    .formBLock {
+        width: 511px;
+    }
+
+    .textBlock>p {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .wrapper>main {
+        width: 770px;
+    }
+
+    .textBlock,
+    .formBLock {
+        width: 335px;
+    }
+
+    .textBlock {
+        &>h1 {
+            font-size: 34px;
+        }
+
+        &>p {
+            font-size: 20px;
+            line-height: 110%;
+        }
+    }
+}
+
+@media (max-width: 820px) {
+    .wrapper>main {
+        width: 280px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: flex-start;
+    }
+
+    .textBlock,
+    .formBLock {
+        width: 240px;
+    }
+
+    .textBlock {
+        &>h1 {
+            font-size: 30px;
+        }
+
+        &>p {
+            font-size: 14px;
+            line-height: 120%;
+        }
+    }
+
+    .formBLock {
+        &>p {
+            font-size: 14px;
+        }
+
+        &>input,
+        &>textarea {
+            font-size: 14px;
+        }
+    }
+
+    .checkBlock {
+        --side: 22px;
+
+        &>p {
+            font-size: 16px;
+        }
+
+        & img {
+            width: 8px;
+            height: 6px;
+        }
     }
 }
