@@ -31,7 +31,7 @@ const TrustedBy = () => {
                         <div className={styles.sliderWrapper}>
                             <Slider
                                 items={[...cards, <div />]}
-                                columns={2}
+                                columns={3}
                                 rows={1}
                                 colGap={10}
                                 className={styles.slider}

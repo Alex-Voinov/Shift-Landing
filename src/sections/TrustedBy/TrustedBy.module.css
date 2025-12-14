@@ -59,6 +59,7 @@
     display: none;
     overflow: visible;
     margin-top: 30px;
+    width: 672px;
 }
 
 .slider {    
@@ -121,6 +122,5 @@
 
     .sliderWrapper {
         display: block;
-        width: 570px;
     }
 }
