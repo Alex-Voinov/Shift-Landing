@@ -13,6 +13,7 @@ import Tariffs from "./sections/Tariffs"
 import TrustedBy from "./sections/TrustedBy"
 import Promo from "./sections/Promo"
 import Feedback from "./sections/Feedback"
+import Form from "./sections/Form"
 
 
 const sections = [
@@ -46,8 +47,9 @@ const App = () => {
       ))}
       <Marquee />
       <TrustedBy />
-      <Promo />
       <Feedback />
+      <Promo />
+      <Form />
       <Tariffs />
       <Footer />
     </>
