@@ -14,3 +14,15 @@
   line-height: 140%;
   letter-spacing: 0%;
 }
+
+@media (max-width: 1550px) {
+  .word{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 820px) {
+  .word{
+    font-size: 20px;
+  }
+}
