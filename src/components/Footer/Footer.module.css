@@ -1,13 +1,44 @@
 .wrapper {
     width: 100%;
-    padding: 18px 224px;
+    padding: 18px 0 18px;
     background-color: #2985FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    width: 1472px;
+    align-items: center;
+    justify-content: space-between;
     font-weight: 400;
     font-size: 20px;
     line-height: 140%;
     letter-spacing: 0%;
     color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+}
+
+@media (max-width: 1550px) {
+    .container {
+        width: 1122px;
+        font-size: 20px;
+    }
+
+    .additionalText {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 770px;
+    }
+}
+
+@media (max-width: 820px) {
+    .container {
+        width: 280px;
+        font-size: 14px;
+    }
 }
