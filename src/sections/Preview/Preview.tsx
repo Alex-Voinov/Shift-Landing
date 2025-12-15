@@ -1,4 +1,3 @@
-import { forwardRef } from 'react'
 import styles from './Preview.module.css'
 import { EXTERNAL_LINKS } from '@/config/links'
 import Lightning from '@/assets/images/svg/lightning.svg'
@@ -11,9 +10,9 @@ const descPoints = [
 ]
 
 
-const Preview = forwardRef<HTMLElement>((_, ref) => {
+const Preview = () => {
     return (
-        <section ref={ref} className={styles.wrapper}>
+        <section className={styles.wrapper}>
             <main>
                 <h1>
                     <span className={styles.fullText}>Соберите рабочий персонал</span>
@@ -61,6 +60,6 @@ const Preview = forwardRef<HTMLElement>((_, ref) => {
             </div>
         </section>
     )
-})
+}
 
 export default Preview

@@ -14,13 +14,34 @@ import TrustedBy from "./sections/TrustedBy"
 import Promo from "./sections/Promo"
 import Feedback from "./sections/Feedback"
 import Form from "./sections/Form"
+import Cases from "./sections/Cases"
+import { forwardRef } from "react"
 
+
+const AboutUs = forwardRef<HTMLDivElement>(
+  (_, ref) => (
+    <div ref={ref}>
+      <Problems />
+      <Workflow />
+      <Benefits />
+      <Marquee />
+    </div >
+  )
+)
+
+const Special = forwardRef<HTMLDivElement>(
+  (_, ref) => <div ref={ref}>
+    <Promo />
+    <Form />
+  </div>)
 
 const sections = [
-  Preview,
-  Problems,
-  Workflow,
-  Benefits
+  AboutUs,
+  TrustedBy,
+  Cases,
+  Feedback,
+  Special,
+  Tariffs
 ];
 
 const App = () => {
@@ -36,6 +57,7 @@ const App = () => {
   return (
     <>
       <Header activeSection={active} onClickSection={handleMenuClick} />
+      <Preview />
 
       {sections.map((Section, idx) => (
         <Section
@@ -45,12 +67,7 @@ const App = () => {
           }}
         />
       ))}
-      <Marquee />
-      <TrustedBy />
-      <Feedback />
-      <Promo />
-      <Form />
-      <Tariffs />
+
       <Footer />
     </>
   );

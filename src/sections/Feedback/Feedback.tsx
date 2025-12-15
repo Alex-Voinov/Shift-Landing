@@ -1,12 +1,12 @@
-import { FC } from 'react'
+import { FC, forwardRef } from 'react'
 import styles from './Feedback.module.css'
 import feedbacks from '@/config/feedback'
 import FeedbackCard from '@/components/FeedbackCard'
 
 
-const Feedback: FC = () => {
+const Feedback: FC = forwardRef<HTMLDivElement>((_, ref) => {
     return (
-        <section className={styles.wrapper}>
+        <section className={styles.wrapper} ref={ref}>
             <main>
                 {feedbacks.map((
                     data,
@@ -18,6 +18,6 @@ const Feedback: FC = () => {
             </main>
         </section>
     )
-}
+})
 
 export default Feedback

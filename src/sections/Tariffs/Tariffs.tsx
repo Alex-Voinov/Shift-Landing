@@ -2,6 +2,7 @@ import Slider from '@/components/Slider'
 import styles from './Tariffs.module.css'
 import tariffs from '@/config/tariffs'
 import TariffCard from '@/components/TariffCard'
+import { forwardRef } from 'react'
 
 
 const cards = tariffs.map(
@@ -15,9 +16,9 @@ const cards = tariffs.map(
     />
 )
 
-const Tariffs = () => {
+const Tariffs = forwardRef<HTMLDivElement>((_, ref) => {
     return (
-        <section className={styles.wrapper}>
+        <section className={styles.wrapper} ref={ref}>
             <main>
                 <h1>Тарифы</h1>
                 <div className={styles.container}>
@@ -35,7 +36,7 @@ const Tariffs = () => {
             </main>
         </section>
     )
-}
+})
 
 export default Tariffs
 

@@ -1,4 +1,3 @@
-import { forwardRef } from 'react'
 import styles from './Problems.module.css'
 import problems from '@/config/problemsText'
 import ProblemCard from '@/components/ProblemCard/ProblemCard'
@@ -12,9 +11,9 @@ const cards = problems.map(
     />
 )
 
-const Problems = forwardRef<HTMLDivElement>((_, ref) => {
+const Problems = () => {
     return (
-        <section ref={ref} className={styles.wrapper}>
+        <section className={styles.wrapper}>
             <main>
                 <h1>Проблемы,</h1>
                 <h2>которые мы поможем решить</h2>
@@ -33,6 +32,6 @@ const Problems = forwardRef<HTMLDivElement>((_, ref) => {
             </main>
         </section>
     )
-})
+}
 
 export default Problems

@@ -1,4 +1,3 @@
-import { forwardRef } from "react"
 import styles from './Workflow.module.css'
 import workflow from '@/assets/images/png/workflow.png'
 import steps from "@/config/workflowText"
@@ -15,9 +14,9 @@ const stepImages = [
 ]
 
 
-const Workflow = forwardRef<HTMLDivElement>((_, ref) => {
+const Workflow = () => {
     return (
-        <section ref={ref} className={styles.wrapper}>
+        <section  className={styles.wrapper}>
             <main>
                 <h1>Как это работает?</h1>
                 <p>Наш сервис помогает быстро и просто собрать людей на завтра на ваш объект</p>
@@ -42,6 +41,6 @@ const Workflow = forwardRef<HTMLDivElement>((_, ref) => {
             </main>
         </section>
     )
-})
+}
 
 export default Workflow
