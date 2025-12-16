@@ -3,6 +3,8 @@ import styles from './Header.module.css'
 import clsx from 'clsx'
 import Burger from '@/assets/images/svg/burger.svg'
 import BurgerMenu from '../BurgerMenu';
+import Logo from '@/components/Logo';
+
 
 interface IHeader {
     activeSection: number;
@@ -21,8 +23,17 @@ const menuPoints = [
 const Header: FC<IHeader> = ({ activeSection, onClickSection }) => {
 
     const [open, setOpen] = useState(false);
-    const logo = <div className={styles.logo}>
-    </div>
+
+    const scrollToTop = () => {
+        setOpen(false);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
+    const logo = <Logo className={styles.logo} action={scrollToTop} />
+
     const menu = <div className={styles.menu}>
         {menuPoints.map((text, index) => <p
             key={`header-menu-point-${index}`}
@@ -40,7 +51,6 @@ const Header: FC<IHeader> = ({ activeSection, onClickSection }) => {
             <div className={styles.container}>
                 {logo}
                 {menu}
-                {logo}
             </div>
             <img onClick={() => setOpen(true)} className={styles.burger} src={Burger} alt="menu" />
             <BurgerMenu open={open} onClose={() => setOpen(false)}>
