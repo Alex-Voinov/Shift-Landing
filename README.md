@@ -1,73 +1,114 @@
-# React + TypeScript + Vite
+# Shift Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React + TypeScript + Vite template for the Shift landing page. It is ready to be built and served via Docker and Traefik in Docker Swarm. The project includes a minimal setup with ESLint configuration for type-checked rules and optional React-specific lint rules.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Setup
 
-## React Compiler
+Install project dependencies using npm:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    npm install
 
-## Expanding the ESLint configuration
+Start the development server:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the app. The page supports hot module replacement (HMR) and will reload automatically on code changes.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Build the project for production:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
+    npm run build
+
+The build output will be generated in the `dist/` folder.
+
+---
+
+## ESLint Configuration
+
+The project includes ESLint configuration with type-aware rules for TypeScript. Recommended configuration:
+
+    export default defineConfig([
+      globalIgnores(['dist']),
+      {
+        files: ['**/*.{ts,tsx}'],
+        extends: [
+          tseslint.configs.recommendedTypeChecked,
+          tseslint.configs.strictTypeChecked,
+          tseslint.configs.stylisticTypeChecked,
+        ],
+        languageOptions: {
+          parserOptions: {
+            project: ['./tsconfig.node.json', './tsconfig.app.json'],
+            tsconfigRootDir: import.meta.dirname,
+          },
+        },
       },
-      // other options...
-    },
-  },
-])
-```
+    ])
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Optional ESLint rules for React and React DOM:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+    import reactX from 'eslint-plugin-react-x'
+    import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
+    export default defineConfig([
+      globalIgnores(['dist']),
+      {
+        files: ['**/*.{ts,tsx}'],
+        extends: [
+          reactX.configs['recommended-typescript'],
+          reactDom.configs.recommended,
+        ],
+        languageOptions: {
+          parserOptions: {
+            project: ['./tsconfig.node.json', './tsconfig.app.json'],
+            tsconfigRootDir: import.meta.dirname,
+          },
+        },
       },
-      // other options...
-    },
-  },
-])
-```
+    ])
+
+---
+
+## Docker Build & Run
+
+The project uses a multi-stage Docker build: Node 22 is used for building the project and Nginx serves the static files.
+
+Dockerfile:
+
+    FROM node:22-alpine AS build
+
+    WORKDIR /app
+
+    COPY package*.json ./
+    RUN npm install
+
+    COPY . .
+    RUN npm run build
+
+    FROM nginx:alpine
+
+    COPY --from=build /app/dist /usr/share/nginx/html
+
+    EXPOSE 80
+
+    CMD ["nginx", "-g", "daemon off;"]
+
+Build the Docker image:
+
+    docker build -t shift-landing .
+
+Run the Docker container locally:
+
+    docker run -p 8080:80 shift-landing
+
+Open [http://localhost:8080](http://localhost:8080) to view the landing page. Traefik in Swarm will handle routing to the container automatically.
+
+---
+
+## Notes
+
+- The `dist/` folder is automatically generated during `npm run build` and should **not** be committed to the repository.
+- This setup is ready for deployment in Docker Swarm with Traefik.
+- The container listens on port 80 internally; external port mapping can be adjusted via Traefik or `docker run`.
+- All source code, configuration, and Dockerfile are included in the repository for easy deployment and version control.
