@@ -1,63 +1,27 @@
 const trustPoints = [
     {
         title: 'Строительные компании',
-        src: [
-            '',
-            '',
-            '',
-            '',
-            '',
-        ],
+        srcFolder: 'construction_companies',
     },
     {
         title: 'Производства',
-        src: [
-            '',
-            '',
-            '',
-            '',
-            '',
-        ],
+        srcFolder: 'production',
     },
     {
         title: 'Складские комплексы',
-        src: [
-            '',
-            '',
-            '',
-            '',
-            '',
-        ],
+        srcFolder: 'arehouse_complexes',
     },
     {
         title: 'Логистические компании',
-        src: [
-            '',
-            '',
-            '',
-            '',
-            '',
-        ],
+        srcFolder: 'logistics_companies',
     },
     {
         title: 'Частные строители',
-        src: [
-            '',
-            '',
-            '',
-            '',
-            '',
-        ],
+        srcFolder: 'private_builders',
     },
     {
         title: 'Компании из сферы благоустройства',
-        src: [
-            '',
-            '',
-            '',
-            '',
-            '',
-        ],
+        srcFolder: 'improvement_companies',
     },
 
 ]

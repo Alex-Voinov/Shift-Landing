@@ -1,9 +1,8 @@
 import trustPoints from '@/config/trustedBy'
 import styles from './TrustedBy.module.css'
-import PlaceholderPhoto from '@/assets/images/png/placeholderPhoto.png'
 import Slider from '@/components/Slider'
 import { forwardRef } from 'react'
-
+import TrustedCard from '@/components/TrustedCard'
 
 
 const TrustedBy = forwardRef<HTMLDivElement>((_, ref) => {
@@ -12,15 +11,13 @@ const TrustedBy = forwardRef<HTMLDivElement>((_, ref) => {
             <main>
                 <h1>Кто нам доверяет?</h1>
                 {trustPoints.map((data, index) => {
-                    const cards = data.src.map((source, phIndex) => <div
-                        className={styles.oneCard}
-                        key={`tp-${index}-${phIndex}`}
-                    >
-                        <img
-                            src={source ? source : PlaceholderPhoto}
-                            alt="co-photo"
-                        />
-                    </div>)
+                    const imageUrl = []
+                    for (let i = 1; i <= 5; i++) imageUrl.push(`${import.meta.env.BASE_URL}${data.srcFolder}/${i}.png`)
+                    const cards = imageUrl.map((source, phIndex) => <TrustedCard
+                        index={index}
+                        phIndex={phIndex}
+                        source={source}
+                    />)
                     return <div
                         className={styles.record}
                         key={`trust-point-${index}`}
