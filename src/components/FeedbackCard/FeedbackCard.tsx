@@ -39,10 +39,16 @@ const FeedbackCard: FC<IFeedbackCard> = ({
     const words = position.trim().split(/\s+/)
     const firstWord = words[0]
     const restWords = words.slice(1).join(' ')
+    const fullName = `${surName} ${firstName}`
     return (
         <div className={styles.wrapper}>
             <div className={styles.head}>
-                <div className={styles.avatar} />
+                <div className={styles.avatar} >
+                    <img
+                        src={`${import.meta.env.BASE_URL}feedbacks/${fullName}.jpg`}
+                        alt={fullName}
+                    />
+                </div>
                 <div className={styles.personalBlock}>
                     <h1>{`${firstName} ${surName}`}</h1>
                     <p>{firstWord} <span className={styles.hiddenPartion}>{restWords}</span> </p>
