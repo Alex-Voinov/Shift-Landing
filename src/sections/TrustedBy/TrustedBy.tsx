@@ -12,7 +12,8 @@ const TrustedBy = forwardRef<HTMLDivElement>((_, ref) => {
                 <h1>Кто нам доверяет?</h1>
                 {trustPoints.map((data, index) => {
                     const imageUrl = []
-                    for (let i = 1; i <= 5; i++) imageUrl.push(`${import.meta.env.BASE_URL}${data.srcFolder}/${i}.png`)
+                    for (let i = 1; i <= 5; i++)
+                        imageUrl.push(`${import.meta.env.BASE_URL}${data.srcFolder}/${i}.png`)
                     const cards = imageUrl.map((source, phIndex) => <TrustedCard
                         index={index}
                         phIndex={phIndex}
