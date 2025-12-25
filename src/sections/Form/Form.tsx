@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './Form.module.css'
 import Select from '@/assets/images/svg/select.svg'
 import clsx from 'clsx';
+import { FORM_LINKS } from '@/config/links';
 
 
 const Form = () => {
@@ -15,7 +16,7 @@ const Form = () => {
                         о возможностях для крупных объёмов.</p>
                 </div>
                 <form className={styles.formBLock}>
-                    <p>Имя</p>
+                    {/* <p>Имя</p>
                     <input type="text" placeholder='Алексей' />
                     <p>Телефон</p>
                     <input type="tel" placeholder='+7(999)000-00-00' />
@@ -26,8 +27,12 @@ const Form = () => {
                             <img src={Select} alt="select" />
                         </div>
                         <p>Согласен на обработку</p>
-                    </div>
-                    <button>Отправить заявку</button>
+                    </div> */}
+                    <button
+                        onClick={() => window.open(FORM_LINKS.request, "_blank")}
+                    >
+                        Отправить заявку
+                    </button>
                 </form>
             </main>
         </section>

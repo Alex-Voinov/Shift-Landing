@@ -92,7 +92,9 @@
     }
 
     &>button {
-        width: 100%;
+        /* width: 100%; */
+        width: 187px;
+        margin-left: auto;
         background: #2985FF;
         height: 48px;
         border-radius: 12px;
@@ -105,7 +107,7 @@
         letter-spacing: 0%;
         color: #FFFFFF;
         cursor: pointer;
-        margin-top: 20px;
+        /* margin-top: 20px; */
     }
 }
 
@@ -222,6 +224,9 @@
         &>input,
         &>textarea {
             font-size: 14px;
+        }
+        &>button{
+            width: 100%;
         }
     }
 
