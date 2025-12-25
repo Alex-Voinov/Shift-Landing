@@ -24,8 +24,18 @@ const CaseCard: FC<ICaseCard> = ({
                 <span>{title}</span>
             </div>
             <div className={styles.gallery}>
-                <img src={url1} alt={`${title}: img 1`} />
-                <img src={url2} alt={`${title}: img 2`} />
+                <div className={styles.imgWrapper}>
+                    <img
+                        src={`${import.meta.env.BASE_URL}cases/${url1}.jpg`}
+                        alt={`${title}: img 1`}
+                    />
+                </div>
+                <div className={styles.imgWrapper}>
+                    <img
+                        src={`${import.meta.env.BASE_URL}cases/${url2}.jpg`}
+                        alt={`${title}: img 2`}
+                    />
+                </div>
             </div>
             <div className={styles.resultBlock}>
                 <span>Результат:&nbsp;</span>
