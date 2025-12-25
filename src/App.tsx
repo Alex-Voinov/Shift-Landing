@@ -16,6 +16,7 @@ import Feedback from "./sections/Feedback"
 import Form from "./sections/Form"
 import Cases from "./sections/Cases"
 import { forwardRef } from "react"
+import Signature from "./components/Signature"
 
 
 const AboutUs = forwardRef<HTMLDivElement>(
@@ -67,7 +68,7 @@ const App = () => {
           }}
         />
       ))}
-
+      <Signature />
       <Footer />
     </>
   );
