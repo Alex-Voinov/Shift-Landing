@@ -1,0 +1,134 @@
+kind: pipeline
+type: docker
+name: Build Landing
+
+environment:
+  IMAGE_LANDING_NAME: "registry.1-shift.ru/landing-${DRONE_BRANCH}:latest"
+
+trigger:
+  branch:
+    - master
+    - develop
+image_pull_secrets:
+  - docker_config
+node:
+  label: test
+steps:
+- name: Build Sources Production
+  image: registry.1-shift.ru/node:latest
+  commands:
+    - npm install
+    - npm run build
+  when:
+    branch:
+      - master
+
+- name: Build Sources Test
+  image: registry.1-shift.ru/node:latest
+  commands:
+    - npm install
+    - npm run build
+  when:
+    branch:
+      - develop
+
+- name: Build Docker Image
+  image: docker:dind
+  commands:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD registry.1-shift.ru
+    - docker build -t $IMAGE_LANDING_NAME .
+    - docker push $IMAGE_LANDING_NAME
+  environment:
+    DOCKER_USER:
+      from_secret: docker_username
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+
+- name: Send Telegram Notification
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: TELEGRAM_BOT_TOKEN
+    to:
+      from_secret: TELEGRAM_CHAT_ID
+  when:
+    status:
+      - failure
+
+---
+kind: pipeline
+type: docker
+name: Deploy Test
+
+environment:
+  IMAGE_LANDING_NAME: "registry.1-shift.ru/landing-${DRONE_BRANCH}:latest"
+trigger:
+  branch:
+    - develop
+node:
+  label: test
+depends_on:
+  - Build Landing
+steps:
+  - name: Deploy Test
+    image: docker:dind
+    commands:
+      - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD registry.1-shift.ru
+      - docker stack deploy --with-registry-auth --compose-file stack_stage.yml mvp_landing
+      - docker image prune -f
+    environment:
+      DOCKER_USER:
+        from_secret: docker_username
+      DOCKER_PASSWORD:
+        from_secret: docker_password
+
+  - name: Send Telegram Notification
+    image: appleboy/drone-telegram
+    settings:
+      token:
+        from_secret: TELEGRAM_BOT_TOKEN
+      to:
+        from_secret: TELEGRAM_CHAT_ID
+    when:
+      status:
+        - success
+        - failure
+
+---
+kind: pipeline
+type: docker
+name: Deploy Production
+
+environment:
+  IMAGE_LANDING_NAME: "registry.1-shift.ru/landing-${DRONE_BRANCH}:latest"
+trigger:
+  branch:
+    - master
+node:
+  label: prod
+depends_on:
+  - Build Landing
+steps:
+  - name: Deploy Production
+    image: docker:dind
+    commands:
+      - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD registry.1-shift.ru
+      - docker stack deploy --with-registry-auth --compose-file stack_prod.yml mvp_landing
+      - docker image prune -f
+    environment:
+      DOCKER_USER:
+        from_secret: docker_username
+      DOCKER_PASSWORD:
+        from_secret: docker_password
+
+  - name: Send Telegram Notification
+    image: appleboy/drone-telegram
+    settings:
+      token:
+        from_secret: TELEGRAM_BOT_TOKEN
+      to:
+        from_secret: TELEGRAM_CHAT_ID
+    when:
+      status:
+        - success
+        - failure
